@@ -48,6 +48,13 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("%d albums by John Coltrane\n", len(albums))
+
+	// Call the albumByID function and print the results. The example of ID is 2.
+	alb, err := albumByID(2)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Album by ID: %#v\n", alb)
 }
 
 // albumsByartist queries for albums that have the specified artist name.
