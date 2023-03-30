@@ -55,6 +55,17 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("Album by ID: %#v\n", alb)
+
+	// Call the addAlbum function for add data to database and print the result.
+	albId, err := addAlbum(Album{
+		Title: "The Modern Sound of Betty Carter",
+		Artist: "Betty Carter",
+		Price: 49.99,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("New album ID: %v\n", albId)
 }
 
 // albumsByartist queries for albums that have the specified artist name.
