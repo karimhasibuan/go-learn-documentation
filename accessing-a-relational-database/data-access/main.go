@@ -25,6 +25,7 @@ func main() {
 		Net: "tcp",
 		Addr: "127.0.0.1:3306",
 		DBName: "go_learn_recordings_db",
+		AllowNativePasswords: true,
 	}
 
 	// Get a database handle.
