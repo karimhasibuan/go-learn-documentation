@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	"os"
 
 	"github.com/go-sql-driver/mysql"
 )
@@ -14,8 +13,8 @@ var db *sql.DB
 func main() {
 	// Capture connection properties.
 	cfg := mysql.Config{
-		User: os.Getenv("DBUSER"),
-		Passwd: os.Getenv("DBPASS"),
+		User: "root",
+		Passwd: "",
 		Net: "tcp",
 		Addr: "127.0.0.1:3306",
 		DBName: "go_learn_recordings_db",
