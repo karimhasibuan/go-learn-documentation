@@ -96,3 +96,17 @@ func albumByID(id int64) (Album, error) {
 	}
 	return alb, nil
 }
+
+// addAlbum adds a new album to the database.
+// returning the album ID of the newly inserted album.
+func addAlbum(alb Album) (int64, error) {
+	res, err := db.Exec("INSERT INTO album (title, artist, price) VALUES (?, ?, ?)", alb.Title, alb.Artist, alb.Price)
+	if err != nil {
+		return 0, fmt.Errorf("addAlbum: %v", err)
+	}
+	id, err := res.LastInsertId()
+	if err != nil {
+		return 0, fmt.Errorf("addAlbum: %v", err)
+	}
+	return id, nil
+}
