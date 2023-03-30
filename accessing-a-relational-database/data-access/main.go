@@ -74,3 +74,18 @@ func albumsByartist(name string) ([]Album, error) {
 	}
 	return albums, nil
 }
+
+// albumsByartist queries for albums that have the specified ID.
+func albumByID(id int64) (Album, error) {
+	// An albums slice to hold data from returned rows.
+	var alb Album
+
+	row := db.QueryRow("SELECT * FROM album WHERE id = ?", id)
+	if err := row.Scan(&alb.ID, &alb.Title, &alb.Artist, &alb.Price); err != nil {
+		if err == sql.ErrNoRows {
+		return alb, fmt.Errorf("albumByID %d: no such album", id)
+		}
+		return alb, fmt.Errorf("albumByID %d: %v", id, err)
+	}
+	return alb, nil
+}
