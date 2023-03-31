@@ -26,6 +26,9 @@ func main() {
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
 
+	// Get specific album by id.
+	router.GET("/albums/:id", getAlbumByID)
+
 	// POST new albums.
 	router.POST("/albums", postAlbums)
 
