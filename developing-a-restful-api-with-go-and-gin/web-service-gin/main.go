@@ -26,6 +26,9 @@ func main() {
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
 
+	// POST new albums.
+	router.POST("/albums", postAlbums)
+
 	// Start and run the server.
 	router.Run("localhost:8080")
 }
